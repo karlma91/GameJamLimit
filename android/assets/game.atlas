@@ -1,0 +1,286 @@
+
+game.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arm
+  rotate: false
+  xy: 2, 410
+  size: 1765, 534
+  orig: 1765, 534
+  offset: 0, 0
+  index: 1
+awesome
+  rotate: false
+  xy: 2, 12
+  size: 400, 396
+  orig: 400, 396
+  offset: 0, 0
+  index: 1
+awesome
+  rotate: false
+  xy: 404, 12
+  size: 400, 396
+  orig: 400, 396
+  offset: 0, 0
+  index: 2
+awesome
+  rotate: false
+  xy: 806, 12
+  size: 400, 396
+  orig: 400, 396
+  offset: 0, 0
+  index: 3
+background
+  rotate: false
+  xy: 2, 946
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+crosshair
+  rotate: false
+  xy: 1789, 288
+  size: 128, 129
+  orig: 128, 129
+  offset: 0, 0
+  index: -1
+green
+  rotate: false
+  xy: 2, 9
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+monster
+  rotate: false
+  xy: 1789, 157
+  size: 128, 129
+  orig: 128, 129
+  offset: 0, 0
+  index: -1
+pigg
+  rotate: false
+  xy: 1789, 91
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+poop
+  rotate: false
+  xy: 1924, 1926
+  size: 43, 100
+  orig: 43, 100
+  offset: 0, 0
+  index: -1
+sad_dude
+  rotate: false
+  xy: 1769, 419
+  size: 196, 525
+  orig: 196, 525
+  offset: 0, 0
+  index: -1
+spoon
+  rotate: false
+  xy: 1537, 2
+  size: 250, 406
+  orig: 250, 406
+  offset: 0, 0
+  index: -1
+vinger
+  rotate: false
+  xy: 1208, 15
+  size: 327, 393
+  orig: 327, 393
+  offset: 0, 0
+  index: 1
+
+game2.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+alarm_clock
+  rotate: false
+  xy: 764, 254
+  size: 436, 687
+  orig: 436, 687
+  offset: 0, 0
+  index: -1
+bar
+  rotate: false
+  xy: 764, 186
+  size: 458, 66
+  orig: 458, 66
+  offset: 0, 0
+  index: -1
+busStop_bg
+  rotate: false
+  xy: 2, 943
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+dude
+  rotate: false
+  xy: 1202, 304
+  size: 600, 637
+  orig: 600, 637
+  offset: 0, 0
+  index: -1
+flappy_bird
+  rotate: false
+  xy: 1526, 62
+  size: 412, 240
+  orig: 412, 240
+  offset: 0, 0
+  index: -1
+haha
+  rotate: false
+  xy: 764, 16
+  size: 300, 168
+  orig: 300, 168
+  offset: 0, 0
+  index: -1
+pipe
+  rotate: false
+  xy: 2, 110
+  size: 379, 831
+  orig: 379, 831
+  offset: 0, 0
+  index: -1
+pipe_down
+  rotate: false
+  xy: 383, 110
+  size: 379, 831
+  orig: 379, 831
+  offset: 0, 0
+  index: -1
+sad_poop_dude
+  rotate: false
+  xy: 1804, 416
+  size: 196, 525
+  orig: 196, 525
+  offset: 0, 0
+  index: -1
+smiley
+  rotate: false
+  xy: 1224, 2
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+
+game3.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arm
+  rotate: false
+  xy: 2, 397
+  size: 1765, 534
+  orig: 1765, 534
+  offset: 0, 0
+  index: 2
+flappy_bg
+  rotate: false
+  xy: 2, 933
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+vinger
+  rotate: false
+  xy: 2, 2
+  size: 327, 393
+  orig: 327, 393
+  offset: 0, 0
+  index: 2
+
+game4.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arm
+  rotate: false
+  xy: 2, 2
+  size: 1765, 534
+  orig: 1765, 534
+  offset: 0, 0
+  index: 3
+floor
+  rotate: false
+  xy: 2, 538
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
+game5.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arm
+  rotate: false
+  xy: 2, 2
+  size: 1765, 534
+  orig: 1765, 534
+  offset: 0, 0
+  index: 4
+wall_last_drawn
+  rotate: false
+  xy: 2, 538
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
+game6.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+dude_closed
+  rotate: false
+  xy: 2, 2
+  size: 600, 637
+  orig: 600, 637
+  offset: 0, 0
+  index: -1
+nuclear
+  rotate: false
+  xy: 2, 641
+  size: 1600, 1163
+  orig: 1600, 1163
+  offset: 0, 0
+  index: -1
+
+game7.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+foot
+  rotate: false
+  xy: 2, 2
+  size: 1472, 1219
+  orig: 1472, 1219
+  offset: 0, 0
+  index: 1
+
+game8.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+foot
+  rotate: false
+  xy: 2, 2
+  size: 1472, 1219
+  orig: 1472, 1219
+  offset: 0, 0
+  index: 3
