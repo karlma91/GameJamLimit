@@ -3,6 +3,7 @@ package no.wafflewings.limitcurse;
 import java.awt.Font;
 import java.lang.Thread.State;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
@@ -69,9 +70,10 @@ public class LimitCurse extends Game {
 	int gamesCompleted = 0;
 	int lifes;
 	float survivalTime = 0;
-	
+	float allTimer = 0;
 	Sound fanfare;
 	BitmapFont font;
+	Animation title;
 	
 	
 	public LimitCurse() {
@@ -83,44 +85,42 @@ public class LimitCurse extends Game {
 	int start = 0;
 	@Override
 	public void create () {
+		//Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode().width, Gdx.graphics.getDesktopDisplayMode().height, true);
 		atlas = new TextureAtlas(Gdx.files.internal("game.atlas"));
 		cam = new OrthographicCamera();
 		viewport = new FitViewport(W, H, cam);
 		batch = new SpriteBatch();
-		background = atlas.createSprite("haha");
+		background = atlas.createSprite("title_bg");
 		background.setSize(W, H);
 		background.setPosition(-W/2, -H/2);
 		font = new BitmapFont();
-//		minigames.add(new WakeUpCall());
-//		minigames.add(new SpoonFed());
-//		minigames.add(new FootPain());
-//		minigames.add(new BusStop());
-//		minigames.add(new FlappyBird());
-//		minigames.add(new Labyrinth());
+		minigames.add(new WakeUpCall());
+		minigames.add(new SpoonFed());
+		minigames.add(new FootPain());
+		minigames.add(new BusStop());
+		minigames.add(new FlappyBird());
+		minigames.add(new Labyrinth());
 		minigames.add(new Shoot());
-//		
-		int FRAME_COLS = 5;
-		int FRAME_ROWS = 5;
-        Texture walkSheet = new Texture(Gdx.files.internal("nuclear.png")); // #9
-        TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth()/FRAME_COLS, walkSheet.getHeight()/FRAME_ROWS);              // #10
-        TextureRegion[] walkFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
-        int index = 0;
-        for (int i = 0; i < FRAME_ROWS; i++) {
-            for (int j = 0; j < FRAME_COLS; j++) {
-                walkFrames[index++] = tmp[i][j];
-            }
-        }
-        explosion = new Animation(1/25.0f, walkFrames);      // #11
+		
+        TextureRegion[] expFrames = new TextureRegion[4];
+        expFrames[0] = atlas.findRegion("explosion01");
+        expFrames[1] = atlas.findRegion("explosion02");
+        expFrames[2] = atlas.findRegion("explosion03");
+        expFrames[3] = atlas.findRegion("explosion04");
+        
+        explosion = new Animation(1/5.0f, expFrames);      // #11
         
         Array<AtlasRegion> arr = atlas.findRegions("awesome");
-        
-        Texture well = new Texture(Gdx.files.internal("smiley.png"));
-        
         TextureRegion[] tr = new TextureRegion[arr.size];
         for (int i = 0; i < tr.length; i++) {
 			tr[i] = arr.get(i);
 		}
         welldone = new Animation(1/3.0f, tr);
+        
+        TextureRegion[] titlea = new TextureRegion[2];
+        titlea[0] = atlas.findRegion("title01");
+        titlea[1] = atlas.findRegion("title02");
+        title = new Animation(1/10.0f, titlea);
 		
         barCover = atlas.findRegion("bar");
         greenBar = new Sprite(atlas.findRegion("green"));
@@ -136,7 +136,7 @@ public class LimitCurse extends Game {
 	@Override
 	public void render () {
 		float dt = Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f);
-		
+		allTimer += dt;
 		dt*=speed;
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -223,9 +223,12 @@ public class LimitCurse extends Game {
 	private void startRender(float dt) {
 		batch.begin();
 		background.draw(batch);
+		int tw = 897/2;
+		int th = 660/2;
+		batch.draw(title.getKeyFrame(allTimer, true), -tw/2, H/2-th, tw, th);  // #16
 		font.setColor(Color.WHITE);
-		font.setScale(4);
-		font.draw(batch, "Use Space and arrows", -font.getBounds("Use space and arrows").width/2, 0);
+		font.setScale(3.5f);
+		font.draw(batch, "Use Space and arrows", -font.getBounds("Use space and arrows").width/2, -H/2 + font.getBounds("Use space and arrows").height+1);
 		batch.end();
 		if(Gdx.input.isKeyPressed(Keys.SPACE)){
 			lifes = 1;
@@ -256,13 +259,11 @@ public class LimitCurse extends Game {
 				endText = current.getFailText();
 			}
 		}
-		Minigame temp = current;
-		int i = 0;
-		while(current == temp && i < 10) {
-			i++;
-			current = minigames.get(MathUtils.random(minigames.size()-1));
-		}
+		current = minigames.get(gameIndex);
 		gameIndex++;
+		if(gameIndex == minigames.size()) {
+			Collections.shuffle(minigames);
+		}
 		gameIndex = gameIndex == minigames.size() ? 0 : gameIndex;
 		current.reset();
 		current.create(tm);

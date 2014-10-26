@@ -41,7 +41,7 @@ background
   index: -1
 crosshair
   rotate: false
-  xy: 1789, 288
+  xy: 1789, 156
   size: 128, 129
   orig: 128, 129
   offset: 0, 0
@@ -55,14 +55,21 @@ green
   index: -1
 monster
   rotate: false
-  xy: 1789, 157
+  xy: 1789, 25
   size: 128, 129
   orig: 128, 129
   offset: 0, 0
   index: -1
+monster_splatted
+  rotate: false
+  xy: 1789, 287
+  size: 128, 130
+  orig: 128, 130
+  offset: 0, 0
+  index: -1
 pigg
   rotate: false
-  xy: 1789, 91
+  xy: 1969, 1962
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -231,7 +238,7 @@ arm
   orig: 1765, 534
   offset: 0, 0
   index: 4
-wall_last_drawn
+title_bg
   rotate: false
   xy: 2, 538
   size: 1920, 1080
@@ -244,6 +251,33 @@ size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+title01
+  rotate: false
+  xy: 2, 2
+  size: 897, 660
+  orig: 897, 660
+  offset: 0, 0
+  index: -1
+title02
+  rotate: false
+  xy: 901, 2
+  size: 897, 660
+  orig: 897, 660
+  offset: 0, 0
+  index: -1
+wall_last_drawn
+  rotate: false
+  xy: 2, 664
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
+
+game7.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
 dude_closed
   rotate: false
   xy: 2, 2
@@ -251,15 +285,67 @@ dude_closed
   orig: 600, 637
   offset: 0, 0
   index: -1
-nuclear
+explosion01
   rotate: false
   xy: 2, 641
+  size: 1892, 1064
+  orig: 1892, 1064
+  offset: 0, 0
+  index: -1
+
+game8.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+explosion02
+  rotate: false
+  xy: 2, 2
+  size: 1892, 1064
+  orig: 1892, 1064
+  offset: 0, 0
+  index: -1
+
+game9.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+explosion03
+  rotate: false
+  xy: 2, 2
+  size: 1892, 1064
+  orig: 1892, 1064
+  offset: 0, 0
+  index: -1
+
+game10.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+explosion04
+  rotate: false
+  xy: 2, 2
+  size: 1892, 1064
+  orig: 1892, 1064
+  offset: 0, 0
+  index: -1
+
+game11.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+nuclear
+  rotate: false
+  xy: 2, 2
   size: 1600, 1163
   orig: 1600, 1163
   offset: 0, 0
   index: -1
 
-game7.png
+game12.png
 size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
@@ -272,7 +358,7 @@ foot
   offset: 0, 0
   index: 1
 
-game8.png
+game13.png
 size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest

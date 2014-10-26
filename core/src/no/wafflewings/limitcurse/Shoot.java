@@ -64,6 +64,8 @@ public class Shoot extends Minigame implements InputProcessor{
 						   MathUtils.random(-H/2 + 100, H/2 - 100));
 		doneTimer = 0;
 		hit = false;
+
+		target.setRegion(LimitCurse.atlas.findRegion("monster"));
 	}
 
 	@Override
@@ -114,6 +116,7 @@ public class Shoot extends Minigame implements InputProcessor{
 			shot.play(0.5f);
 			pos.set(cursor.getX() + cursor.getWidth()/2, cursor.getY() + cursor.getHeight()/2);
 			if(target.getBoundingRectangle().contains(pos) && !hit){
+				target.setRegion(LimitCurse.atlas.findRegion("monster_splatted"));
 				hit = true;
 				shot.play();
 			}

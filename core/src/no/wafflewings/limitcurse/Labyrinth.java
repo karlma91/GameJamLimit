@@ -28,18 +28,19 @@ public class Labyrinth extends Minigame implements InputProcessor{
 	float speed = 200;
 	float doneTimer = 0;
 	boolean goal = false;
-	float mapsize = 14;
-	float tilesize = 30;
+	float mapsize = 6;
+	float tilesize = 60;
 	float mapx = -(tilesize * mapsize)/2;
 	float mapy = -(tilesize * mapsize)/2;
 	int goalx, goaly;
+	boolean dead;
 	public Labyrinth() {
 		background = LimitCurse.atlas.createSprite("floor");
 		wall = LimitCurse.atlas.createSprite("pigg");
 		player = LimitCurse.atlas.createSprite("monster");
 		pos = new Vector2();
 		newpos = new Vector2();
-		snap = Gdx.audio.newSound(Gdx.files.internal("sounds/foot_snap.mp3"));
+		snap = Gdx.audio.newSound(Gdx.files.internal("sounds/splat.wav"));
 		map = new boolean[(int)mapsize][(int)mapsize];
 	}
 	
@@ -64,7 +65,7 @@ public class Labyrinth extends Minigame implements InputProcessor{
 		player.setSize(50, 50);
 		player.setPosition(0, 0);
 		player.setOriginCenter();
-		wall.setSize(30, 30);
+		wall.setSize(tilesize, tilesize);
 		Gdx.input.setInputProcessor(this);
 		doneTimer = 0;
 		goal = false;
@@ -77,9 +78,11 @@ public class Labyrinth extends Minigame implements InputProcessor{
 			map[0][i] = true;
 			map[map.length-1][i] = true;
 		}
-		
+		background.setSize(W, H);
+		background.setPosition(-W/2, -H/2);
 		goalx = MathUtils.random(1, map.length-2);
 		goaly = MathUtils.random(1)>0 ? map.length-1 : 0;
+		dead = false;
 	}
 
 	@Override
@@ -97,11 +100,9 @@ public class Labyrinth extends Minigame implements InputProcessor{
 				if(map[i][j]){
 					wall.setPosition(i*tilesize + mapx, j*tilesize + mapy);
 					if(i == goalx && j == goaly) {
-						wall.setColor(1, 0.5f, 0, 1);
 					}else{
-						wall.setColor(1, 1, 1, 1);
+						wall.draw(sb);
 					}
-					wall.draw(sb);
 				}
 			}
 		}
@@ -121,14 +122,19 @@ public class Labyrinth extends Minigame implements InputProcessor{
 		}else if(Gdx.input.isKeyPressed(Keys.RIGHT)){
 			newpos.add(cspeed, 0);
 		}
-		int x = (int)((newpos.x + (mapsize * tilesize)/2)/ 30);
-		int y = (int)((newpos.y + (mapsize * tilesize)/2)/ 30);
+		int x = (int)((newpos.x + (mapsize * tilesize)/2)/ tilesize);
+		int y = (int)((newpos.y + (mapsize * tilesize)/2)/ tilesize);
 		//Gdx.app.log("map", "mapx: " + x + " mapy: " + y);
-		if(!goal && y>=0 && y<map.length && x>=0 && x < map.length && !map[x][y]){
+		if(!dead && !goal && y>=0 && y<map.length && x>=0 && x < map.length && !map[x][y]){
 			player.setPosition(newpos.x-player.getWidth() / 2, newpos.y - player.getHeight() / 2);
-		}
-		if(x == goalx && y == goaly){
-			goal = true;
+		}else{
+			if(x == goalx && y == goaly){
+				goal = true;
+			}else if(!dead){
+				player.setRegion(LimitCurse.atlas.findRegion("monster_splatted"));
+				dead = true;
+				snap.play();
+			}
 		}
 		
 		if(doneTimer > 1) {
